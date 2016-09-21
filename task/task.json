@@ -1,0 +1,79 @@
+{
+    "id": "BE207BD3-3B87-44F2-B9B4-033437BA04BD",
+    "name": "setIISfolderPermissions",
+    "friendlyName": "Set IIS Application or Folder Permissions",
+    "description": "Task to set permission on web application or sub folder.",
+	"helpMarkDown": "[More Information](https://github.com/jeblankenship/vsts-setIISfolderPermissions-task#readme)",
+    "category": "Utility",
+    "visibility": [
+        "Build"
+    ],
+    "author": "James Blankenship",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 2
+    },
+    "minimumAgentVersion": "1.92.0",
+    "inputs": [
+        {
+            "name": "server",
+            "type": "string",
+            "label": "Server",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "IIS Server to run command on."        
+		},
+        {
+            "name": "webSiteName",
+            "type": "string",
+            "label": "Web Site",
+            "defaultValue": "Default Web Site",
+            "required": true,
+            "helpMarkDown": "Web site to set permissions on."
+        },
+        {
+            "name": "path",
+            "type": "string",
+            "label": "Web Application or Folder",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Folder or web application to set permissions on."
+        },
+        {
+            "name": "anonymousAuthentication",
+            "type": "boolean",
+            "label": "Enable Anonymouse Authentication",
+            "defaultValue": false,
+            "required": true,
+            "helpMarkDown": "Enable Anonymouse Authentication."
+        },
+        {
+            "name": "basicAuthentication",
+            "type": "boolean",
+            "label": "Enable Basic Authentication",
+            "defaultValue": false,
+            "required": true,
+            "helpMarkDown": "Enable Basic Authentication."
+        },
+        {
+            "name": "windowsAuthentication",
+            "type": "boolean",
+            "label": "Enable Windows Authentication",
+            "defaultValue": true,
+            "required": true,
+            "helpMarkDown": "Enable Windows Authentication."
+        }
+    ],
+    "instanceNameFormat": "Set IIS permissions on $(path)",
+    "execution": {
+        "PowerShell": {
+            "target": "$(currentDirectory)\\set-IISfolderPermissions.ps1",
+            "argumentFormat": "",
+            "workingDirectory": "$(System.DefaultWorkingDirectory)"
+		}
+    },
+    "messages": {
+        "CouldNotSet": "Could not set permissions"
+    }
+}
