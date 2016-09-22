@@ -2,7 +2,7 @@
 param(
     [string]$server,
     [string]$webSiteName,
-    [string]$path,
+    [string]$webFolder,
     [string]$anonymousAuthentication,
     [string]$basicAuthentication,
     [string]$windowsAuthentication
@@ -36,4 +36,4 @@ $command = {
 [bool]$basicAuthenticationBool= Convert-String $basicAuthentication Boolean
 [bool]$windowsAuthenticationBool= Convert-String $windowsAuthentication Boolean
 
-Invoke-Command -ComputerName $server $command -ArgumentList $webSiteName,$path,$anonymousAuthenticationBool,$basicAuthenticationBool,$windowsAuthenticationBool
+Invoke-Command -ComputerName $server $command -ArgumentList $webSiteName,$webFolder,$anonymousAuthenticationBool,$basicAuthenticationBool,$windowsAuthenticationBool

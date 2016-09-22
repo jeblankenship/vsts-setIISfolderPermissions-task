@@ -12,7 +12,7 @@
     "version": {
         "Major": 0,
         "Minor": 1,
-        "Patch": 15
+        "Patch": 17
     },
     "minimumAgentVersion": "1.92.0",
     "inputs": [
@@ -33,7 +33,7 @@
             "helpMarkDown": "Web site to set permissions on."
         },
         {
-            "name": "path",
+            "name": "webFolder",
             "type": "string",
             "label": "Web Application or Folder",
             "defaultValue": "",
@@ -65,7 +65,7 @@
             "helpMarkDown": "Enable Windows Authentication."
         }
     ],
-    "instanceNameFormat": "Set IIS permissions 15",
+    "instanceNameFormat": "Set IIS permissions $(webFolder):",
     "execution": {
         "PowerShell": {
             "target": "$(currentDirectory)\\set-IISfolderPermissions.ps1",
