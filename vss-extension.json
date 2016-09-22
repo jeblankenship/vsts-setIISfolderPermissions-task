@@ -1,8 +1,8 @@
 {
     "manifestVersion": 1,
-    "id": "setIISfolderPermissions",
+    "id": "setIISfolderPermissi",
     "name": "Set IIS Application or Folder Permissions",
-    "version": "0.1.2",
+    "version": "0.1.15",
     "public": true,
     "publisher": "docscode",
     "targets": [
