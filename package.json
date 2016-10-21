@@ -1,6 +1,6 @@
 {
   "name": "docsCode.vsts-setIISfolderPermissions-task",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Build task for VS Team Services that set permissions on web application or sub folder.",
   "author": "James Blankenship",
   "license": "MIT",
