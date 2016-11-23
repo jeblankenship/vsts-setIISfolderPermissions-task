@@ -24,12 +24,18 @@ $command = {
         [boolean]$windowsAuthentication
     )
     Import-Module WebAdministration; 
-
-    $location = "$webSiteName/$path"
-    Write-HOST "Setting authentication on $location"
-    Set-WebConfigurationProperty -filter /system.webServer/security/authentication/anonymousAuthentication -name enabled -value $anonymousAuthentication  -location $location;  
-    Set-WebConfigurationProperty -filter /system.webServer/security/authentication/basicAuthentication -name enabled -value $basicAuthentication -location $location;  
-    Set-WebConfigurationProperty -filter /system.webServer/security/authentication/windowsAuthentication -name enabled -value $windowsAuthentication -location $location; 
+    if ([string]::IsNullOrWhiteSpace($path)){
+        Write-HOST "Setting authentication on $webSiteName"
+        Set-WebConfigurationProperty -filter /system.webServer/security/authentication/anonymousAuthentication -name enabled -value $anonymousAuthentication -PSPath IIS:\ -location $webSiteName;  
+        Set-WebConfigurationProperty -filter /system.webServer/security/authentication/basicAuthentication -name enabled -value $basicAuthentication -PSPath IIS:\ -location $webSiteName;  
+        Set-WebConfigurationProperty -filter /system.webServer/security/authentication/windowsAuthentication -name enabled -value $windowsAuthentication -PSPath IIS:\ -location $webSiteName;  
+    }else{
+        $location = "$webSiteName/$path"
+        Write-HOST "Setting authentication on $location"
+        Set-WebConfigurationProperty -filter /system.webServer/security/authentication/anonymousAuthentication -name enabled -value $anonymousAuthentication  -location $location;  
+        Set-WebConfigurationProperty -filter /system.webServer/security/authentication/basicAuthentication -name enabled -value $basicAuthentication -location $location;  
+        Set-WebConfigurationProperty -filter /system.webServer/security/authentication/windowsAuthentication -name enabled -value $windowsAuthentication -location $location; 
+    }
     Write-Verbose "Authentication Set"
 }
 [bool]$anonymousAuthenticationBool= Convert-String $anonymousAuthentication Boolean

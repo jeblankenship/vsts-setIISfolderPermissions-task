@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "setIISfolderPermissions",
     "name": "Set IIS Application or Folder Permissions",
-    "version": "0.1.18",
+    "version": "0.1.19",
     "public": true,
     "publisher": "docscode",
     "targets": [
@@ -10,7 +10,7 @@
             "id": "Microsoft.VisualStudio.Services"
         }
     ],    
-    "description": "Task to set permission on web application or sub folder.",
+    "description": "Task to set permission on web site, web application or subfolder.",
     "categories": [
         "Build and release"
     ],
