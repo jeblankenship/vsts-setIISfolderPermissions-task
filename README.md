@@ -12,7 +12,7 @@ npm install -g tfx-cli
 ```
 *restore VSCode to get tfx to work*
 
-#Build
+# Setup Typescript
 ```
 tsc --init
 ```
